@@ -1,0 +1,276 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2022.5">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px 'Helvetica Neue'}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px 'Helvetica Neue'; min-height: 15.0px}
+    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px 'Apple SD Gothic Neo'}
+    span.s1 {font: 13.0px 'Apple SD Gothic Neo'}
+    span.s2 {font: 13.0px 'Helvetica Neue'}
+  </style>
+</head>
+<body>
+<p class="p1"><b>&lt;!DOCTYPE html&gt;</b></p>
+<p class="p1">&lt;html&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset<b>=</b>"utf-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;<span class="s1">여러개</span> <span class="s1">마커에</span> <span class="s1">이벤트</span> <span class="s1">등록하기</span>1&lt;/title&gt;</p>
+<p class="p2"><span class="Apple-converted-space">    </span></p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p1">&lt;div id<b>=</b>"map" style<b>=</b>"width:100%;height:350px;"&gt;&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;script type<b>=</b>"text/javascript" src<b>=</b>"//dapi.kakao.com/v2/maps/sdk.js?appkey=<span class="s1">발급받은</span> APP KEY<span class="s1">를</span> <span class="s1">사용하세요</span>"&gt;&lt;/script&gt;</p>
+<p class="p1">&lt;script&gt;</p>
+<p class="p1"><b>var</b> mapContainer <b>=</b> document.getElementById('map'), <i>// </i><span class="s1">지도를</span><i> </i><span class="s1">표시할</span><i> div <span class="Apple-converted-space"> </span></i></p>
+<p class="p1"><span class="Apple-converted-space">    </span>mapOption <b>=</b> {<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>center<b>:</b> <b>new</b> kakao.maps.LatLng(33.450701, 126.570667), <i>// </i><span class="s1">지도의</span><i> </i><span class="s1">중심좌표</span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>level<b>:</b> 3 <i>// </i><span class="s1">지도의</span><i> </i><span class="s1">확대</span><i> </i><span class="s1">레벨</span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><b>var</b> map <b>=</b> <b>new</b> kakao.maps.Map(mapContainer, mapOption); <i>// </i><span class="s1">지도를</span><i> </i><span class="s1">생성합니다</span></p>
+<p class="p2"><span class="Apple-converted-space"> </span></p>
+<p class="p3"><span class="s2"><i>// </i></span>마커를<span class="s2"><i> </i></span>표시할<span class="s2"><i> </i></span>위치와<span class="s2"><i> </i></span>내용을<span class="s2"><i> </i></span>가지고<span class="s2"><i> </i></span>있는<span class="s2"><i> </i></span>객체<span class="s2"><i> </i></span>배열입니다<span class="s2"><i><span class="Apple-converted-space"> </span></i></span></p>
+<p class="p1"><b>var</b> positions <b>=</b> [</p>
+<p class="p1"><span class="Apple-converted-space">   </span>{</p>
+<p class="p1">content: '&lt;div&gt;63<span class="s1">스퀘어</span>&lt;/div&gt;',</p>
+<p class="p1">latlng: new kakao.maps.LatLng(37.51982291,126.9400478)</p>
+<p class="p1">},</p>
+<p class="p1">{</p>
+<p class="p1">content: '&lt;div&gt;<span class="s1">경복궁</span>&lt;/div&gt;',</p>
+<p class="p1">latlng: new kakao.maps.LatLng(37.58083744,126.9768257)</p>
+<p class="p1">},</p>
+<p class="p1">{</p>
+<p class="p1">content: '&lt;div&gt;<span class="s1">경희대학교</span> <span class="s1">자연사박물관</span>&lt;/div&gt;',</p>
+<p class="p1">latlng: new kakao.maps.LatLng(37.59206389,127.0554546)</p>
+<p class="p1">},</p>
+<p class="p1">{</p>
+<p class="p1">content: '&lt;div&gt;<span class="s1">광화문광장</span>&lt;/div&gt;',</p>
+<p class="p1">latlng: new kakao.maps.LatLng(37.57242231,126.9768765)</p>
+<p class="p1">},</p>
+<p class="p1">{</p>
+<p class="p1">content: '&lt;div&gt;<span class="s1">국립고궁박물관</span>&lt;/div&gt;',</p>
+<p class="p1">latlng: new kakao.maps.LatLng(37.57701083,126.9766052)</p>
+<p class="p1">},</p>
+<p class="p1">{</p>
+<p class="p1">content: '&lt;div&gt;<span class="s1">국립중앙박물관</span>&lt;/div&gt;',</p>
+<p class="p1">latlng: new kakao.maps.LatLng(37.52302693,126.9822103)</p>
+<p class="p1">},</p>
+<p class="p1">{</p>
+<p class="p1">content: '&lt;div&gt;<span class="s1">국립현대미술관</span> <span class="s1">서울관</span>&lt;/div&gt;',</p>
+<p class="p1">latlng: new kakao.maps.LatLng(37.57950163,126.9805603)</p>
+<p class="p1">},</p>
+<p class="p1">{</p>
+<p class="p1">content: '&lt;div&gt;<span class="s1">국회의사당</span>&lt;/div&gt;',</p>
+<p class="p1">latlng: new kakao.maps.LatLng(37.53104751,126.9153568)</p>
+<p class="p1">},</p>
+<p class="p1">{</p>
+<p class="p1">content: '&lt;div&gt;<span class="s1">남산서울타워</span> &lt;/div&gt;',</p>
+<p class="p1">latlng: new kakao.maps.LatLng(37.54893216,126.9893789)</p>
+<p class="p1">},</p>
+<p class="p1">{</p>
+<p class="p1">content: '&lt;div&gt;<span class="s1">대한민국역사박물관</span>&lt;/div&gt;',</p>
+<p class="p1">latlng: new kakao.maps.LatLng(37.57390912,126.9779006)</p>
+<p class="p1">},</p>
+<p class="p1">{</p>
+<p class="p1">content: '&lt;div&gt;<span class="s1">덕수궁</span>&lt;/div&gt;',</p>
+<p class="p1">latlng: new kakao.maps.LatLng(37.56592605,126.9750099)</p>
+<p class="p1">},</p>
+<p class="p1">{</p>
+<p class="p1">content: '&lt;div&gt;<span class="s1">도산공원</span>&lt;/div&gt;',</p>
+<p class="p1">latlng: new kakao.maps.LatLng(37.52438032,127.0350926)</p>
+<p class="p1">},</p>
+<p class="p1">{</p>
+<p class="p1">content: '&lt;div&gt;<span class="s1">동대문역사관</span> <span class="s1">상설전시실</span> <span class="s1">재개관</span>&lt;/div&gt;',</p>
+<p class="p1">latlng: new kakao.maps.LatLng(37.56731944,127.0087847)</p>
+<p class="p1">},</p>
+<p class="p1">{</p>
+<p class="p1">content: '&lt;div&gt;<span class="s1">롯데월드</span> <span class="s1">민속박물관</span>&lt;/div&gt;',</p>
+<p class="p1">latlng: new kakao.maps.LatLng(37.51127777,127.0979147)</p>
+<p class="p1">},</p>
+<p class="p1">{</p>
+<p class="p1">content: '&lt;div&gt;<span class="s1">롯데월드타워</span>&lt;/div&gt;',</p>
+<p class="p1">latlng: new kakao.maps.LatLng(37.51309242,127.1034089)</p>
+<p class="p1">},</p>
+<p class="p1">{</p>
+<p class="p1">content: '&lt;div&gt;<span class="s1">명동관광정보센터</span>&lt;/div&gt;',</p>
+<p class="p1">latlng: new kakao.maps.LatLng(37.56553035,126.9850434)</p>
+<p class="p1">},</p>
+<p class="p1">{</p>
+<p class="p1">content: '&lt;div&gt;<span class="s1">명동성당</span>&lt;/div&gt;',</p>
+<p class="p1">latlng: new kakao.maps.LatLng(37.56306895,126.986969)</p>
+<p class="p1">},</p>
+<p class="p1">{</p>
+<p class="p1">content: '&lt;div&gt;<span class="s1">몽촌역사관</span>&lt;/div&gt;',</p>
+<p class="p1">latlng: new kakao.maps.LatLng(37.52120098,127.1214043)</p>
+<p class="p1">},</p>
+<p class="p1">{</p>
+<p class="p1">content: '&lt;div&gt;<span class="s1">문화역서울</span> 284&lt;/div&gt;',</p>
+<p class="p1">latlng: new kakao.maps.LatLng(37.55594936,126.9715585)</p>
+<p class="p1">},</p>
+<p class="p1">{</p>
+<p class="p1">content: '&lt;div&gt;<span class="s1">봉은사</span> &lt;/div&gt;',</p>
+<p class="p1">latlng: new kakao.maps.LatLng(37.51513138,127.0569175)</p>
+<p class="p1">},</p>
+<p class="p1">{</p>
+<p class="p1">content: '&lt;div&gt;<span class="s1">삼성미술관</span> <span class="s1">리움</span> &lt;/div&gt;',</p>
+<p class="p1">latlng: new kakao.maps.LatLng(37.53836324,126.9992594)</p>
+<p class="p1">},</p>
+<p class="p1">{</p>
+<p class="p1">content: '&lt;div&gt;<span class="s1">서울도서관</span> (<span class="s1">옛</span> <span class="s1">서울시청사</span>)&lt;/div&gt;',</p>
+<p class="p1">latlng: new kakao.maps.LatLng(37.56657512,126.9781782)</p>
+<p class="p1">},</p>
+<p class="p1">{</p>
+<p class="p1">content: '&lt;div&gt;<span class="s1">서울도시건축전시관</span>&lt;/div&gt;',</p>
+<p class="p1">latlng: new kakao.maps.LatLng(37.56693025,126.9766812)</p>
+<p class="p1">},</p>
+<p class="p1">{</p>
+<p class="p1">content: '&lt;div&gt;<span class="s1">서울로</span>7017 <span class="s1">여행자터미널</span>&lt;/div&gt;',</p>
+<p class="p1">latlng: new kakao.maps.LatLng(37.55577701,126.9686353)</p>
+<p class="p1">},</p>
+<p class="p1">{</p>
+<p class="p1">content: '&lt;div&gt;<span class="s1">서울시립미술관</span> (<span class="s1">서소문본관</span>)&lt;/div&gt;',</p>
+<p class="p1">latlng: new kakao.maps.LatLng(37.56429838,126.9744154)</p>
+<p class="p1">},</p>
+<p class="p1">{</p>
+<p class="p1">content: '&lt;div&gt;<span class="s1">서울역사박물관</span>&lt;/div&gt;',</p>
+<p class="p1">latlng: new kakao.maps.LatLng(37.57074519,126.9688081)</p>
+<p class="p1">},</p>
+<p class="p1">{</p>
+<p class="p1">content: '&lt;div&gt;<span class="s1">선정릉</span>(<span class="s1">선릉</span>)&lt;/div&gt;',</p>
+<p class="p1">latlng: new kakao.maps.LatLng(37.50714456,127.0494011)</p>
+<p class="p1">},</p>
+<p class="p1">{</p>
+<p class="p1">content: '&lt;div&gt;<span class="s1">송파관광정보센터</span>&lt;/div&gt;',</p>
+<p class="p1">latlng: new kakao.maps.LatLng(37.51131437,127.105114)</p>
+<p class="p1">},</p>
+<p class="p1">{</p>
+<p class="p1">content: '&lt;div&gt;<span class="s1">쇳대박물관</span>&lt;/div&gt;',</p>
+<p class="p1">latlng: new kakao.maps.LatLng(37.57979316,127.0046391)</p>
+<p class="p1">},</p>
+<p class="p1">{</p>
+<p class="p1">content: '&lt;div&gt;<span class="s1">스마트서울</span> <span class="s1">전시관</span>&lt;/div&gt;',</p>
+<p class="p1">latlng: new kakao.maps.LatLng(37.56657512,126.9781782)</p>
+<p class="p1">},</p>
+<p class="p1">{</p>
+<p class="p1">content: '&lt;div&gt;<span class="s1">스페이스</span> <span class="s1">씨</span>&lt;/div&gt;',</p>
+<p class="p1">latlng: new kakao.maps.LatLng(37.52400212,127.0326055)</p>
+<p class="p1">},</p>
+<p class="p1">{</p>
+<p class="p1">content: '&lt;div&gt;<span class="s1">양화진외국인선교사묘원</span>&lt;/div&gt;',</p>
+<p class="p1">latlng: new kakao.maps.LatLng(37.54648375,126.9113342)</p>
+<p class="p1">},</p>
+<p class="p1">{</p>
+<p class="p1">content: '&lt;div&gt;<span class="s1">연세대학교</span> <span class="s1">스팀슨관</span>&amp;<span class="s1">언더우드관</span>&amp;<span class="s1">아펜젤러관</span>&lt;/div&gt;',</p>
+<p class="p1">latlng: new kakao.maps.LatLng(37.5646889,126.9394717)</p>
+<p class="p1">},</p>
+<p class="p1">{</p>
+<p class="p1">content: '&lt;div&gt;<span class="s1">예술가의</span> <span class="s1">집</span> (<span class="s1">구</span> <span class="s1">서울대학교</span> <span class="s1">본관</span>)&lt;/div&gt;',</p>
+<p class="p1">latlng: new kakao.maps.LatLng(37.5800797,127.0029559)</p>
+<p class="p1">},</p>
+<p class="p1">{</p>
+<p class="p1">content: '&lt;div&gt;<span class="s1">예술의</span> <span class="s1">전당</span> <span class="s1">한가람미술관</span>&lt;/div&gt;',</p>
+<p class="p1">latlng: new kakao.maps.LatLng(37.48104803,127.0152041)</p>
+<p class="p1">},</p>
+<p class="p1">{</p>
+<p class="p1">content: '&lt;div&gt;<span class="s1">운현궁</span> &lt;/div&gt;',</p>
+<p class="p1">latlng: new kakao.maps.LatLng(37.57611376,126.9871008)</p>
+<p class="p1">},</p>
+<p class="p1">{</p>
+<p class="p1">content: '&lt;div&gt;<span class="s1">전쟁기념관</span>&lt;/div&gt;',</p>
+<p class="p1">latlng: new kakao.maps.LatLng(37.53630724,126.9770895)</p>
+<p class="p1">},</p>
+<p class="p1">{</p>
+<p class="p1">content: '&lt;div&gt;<span class="s1">조계사</span>&lt;/div&gt;',</p>
+<p class="p1">latlng: new kakao.maps.LatLng(37.573881,126.9823078)</p>
+<p class="p1">},</p>
+<p class="p1">{</p>
+<p class="p1">content: '&lt;div&gt;<span class="s1">종묘</span>&lt;/div&gt;',</p>
+<p class="p1">latlng: new kakao.maps.LatLng(37.5746488,126.9940726)</p>
+<p class="p1">},</p>
+<p class="p1">{</p>
+<p class="p1">content: '&lt;div&gt;<span class="s1">창경궁</span>&lt;/div&gt;',</p>
+<p class="p1">latlng: new kakao.maps.LatLng(37.58057161,126.9950151)</p>
+<p class="p1">},</p>
+<p class="p1">{</p>
+<p class="p1">content: '&lt;div&gt;<span class="s1">창덕궁</span>&lt;/div&gt;',</p>
+<p class="p1">latlng: new kakao.maps.LatLng(37.58275941,126.9912971)</p>
+<p class="p1">},</p>
+<p class="p1">{</p>
+<p class="p1">content: '&lt;div&gt;<span class="s1">한성백제박물관</span>&lt;/div&gt;',</p>
+<p class="p1">latlng: new kakao.maps.LatLng(37.51538985,127.1208351)</p>
+<p class="p1">}</p>
+<p class="p1">];</p>
+<p class="p2"><br></p>
+<p class="p1"><b>for</b> (<b>var</b> i <b>=</b> 0; i <b>&lt;</b> positions.length; i <b>++</b>) {</p>
+<p class="p3"><span class="s2"><span class="Apple-converted-space">    </span><i>// </i></span>마커를<span class="s2"><i> </i></span>생성합니다</p>
+<p class="p1"><span class="Apple-converted-space">    </span><b>var</b> marker <b>=</b> <b>new</b> kakao.maps.Marker({</p>
+<p class="p1"><span class="Apple-converted-space">        </span>map<b>:</b> map, <i>// </i><span class="s1">마커를</span><i> </i><span class="s1">표시할</span><i> </i><span class="s1">지도</span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>position<b>:</b> positions[i].latlng <i>// </i><span class="s1">마커의</span><i> </i><span class="s1">위치</span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p2"><br></p>
+<p class="p3"><span class="s2"><span class="Apple-converted-space">    </span><i>// </i></span>마커에<span class="s2"><i> </i></span>표시할<span class="s2"><i> </i></span>인포윈도우를<span class="s2"><i> </i></span>생성합니다<span class="s2"><i><span class="Apple-converted-space"> </span></i></span></p>
+<p class="p1"><span class="Apple-converted-space">    </span><b>var</b> infowindow <b>=</b> <b>new</b> kakao.maps.InfoWindow({</p>
+<p class="p1"><span class="Apple-converted-space">        </span>content<b>:</b> positions[i].content <i>// </i><span class="s1">인포윈도우에</span><i> </i><span class="s1">표시할</span><i> </i><span class="s1">내용</span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span><i>// </i><span class="s1">마커에</span><i> mouseover </i><span class="s1">이벤트와</span><i> mouseout </i><span class="s1">이벤트를</span><i> </i><span class="s1">등록합니다</span></p>
+<p class="p3"><span class="s2"><span class="Apple-converted-space">    </span><i>// </i></span>이벤트<span class="s2"><i> </i></span>리스너로는<span class="s2"><i> </i></span>클로저를<span class="s2"><i> </i></span>만들어<span class="s2"><i> </i></span>등록합니다<span class="s2"><i><span class="Apple-converted-space"> </span></i></span></p>
+<p class="p3"><span class="s2"><span class="Apple-converted-space">    </span><i>// for</i></span>문에서<span class="s2"><i> </i></span>클로저를<span class="s2"><i> </i></span>만들어<span class="s2"><i> </i></span>주지<span class="s2"><i> </i></span>않으면<span class="s2"><i> </i></span>마지막<span class="s2"><i> </i></span>마커에만<span class="s2"><i> </i></span>이벤트가<span class="s2"><i> </i></span>등록됩니다</p>
+<p class="p1"><span class="Apple-converted-space">    </span>kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));</p>
+<p class="p1"><span class="Apple-converted-space">    </span>kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p3"><span class="s2"><i>// </i></span>인포윈도우를<span class="s2"><i> </i></span>표시하는<span class="s2"><i> </i></span>클로저를<span class="s2"><i> </i></span>만드는<span class="s2"><i> </i></span>함수입니다<span class="s2"><i><span class="Apple-converted-space"> </span></i></span></p>
+<p class="p1"><b>function</b> makeOverListener(map, marker, infowindow) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span><b>return</b> <b>function</b>() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>infowindow.open(map, marker);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>};</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p3"><span class="s2"><i>// </i></span>인포윈도우를<span class="s2"><i> </i></span>닫는<span class="s2"><i> </i></span>클로저를<span class="s2"><i> </i></span>만드는<span class="s2"><i> </i></span>함수입니다<span class="s2"><i><span class="Apple-converted-space"> </span></i></span></p>
+<p class="p1"><b>function</b> makeOutListener(infowindow) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span><b>return</b> <b>function</b>() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>infowindow.close();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>};</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p3"><span class="s2"><i>/* </i></span>아래와<span class="s2"><i> </i></span>같이도<span class="s2"><i> </i></span>할<span class="s2"><i> </i></span>수<span class="s2"><i> </i></span>있습니다<span class="s2"><i> */</i></span></p>
+<p class="p1"><i>/*</i></p>
+<p class="p1"><i>for (var i = 0; i &lt; positions.length; i ++) {</i></p>
+<p class="p1"><i><span class="Apple-converted-space">    </span>// </i><span class="s1">마커를</span><i> </i><span class="s1">생성합니다</span></p>
+<p class="p1"><i><span class="Apple-converted-space">    </span>var marker = new kakao.maps.Marker({</i></p>
+<p class="p1"><i><span class="Apple-converted-space">        </span>map: map, // </i><span class="s1">마커를</span><i> </i><span class="s1">표시할</span><i> </i><span class="s1">지도</span></p>
+<p class="p1"><i><span class="Apple-converted-space">        </span>position: positions[i].latlng // </i><span class="s1">마커의</span><i> </i><span class="s1">위치</span></p>
+<p class="p1"><i><span class="Apple-converted-space">    </span>});</i></p>
+<p class="p2"><br></p>
+<p class="p3"><span class="s2"><i><span class="Apple-converted-space">    </span>// </i></span>마커에<span class="s2"><i> </i></span>표시할<span class="s2"><i> </i></span>인포윈도우를<span class="s2"><i> </i></span>생성합니다<span class="s2"><i><span class="Apple-converted-space"> </span></i></span></p>
+<p class="p1"><i><span class="Apple-converted-space">    </span>var infowindow = new kakao.maps.InfoWindow({</i></p>
+<p class="p1"><i><span class="Apple-converted-space">        </span>content: positions[i].content // </i><span class="s1">인포윈도우에</span><i> </i><span class="s1">표시할</span><i> </i><span class="s1">내용</span></p>
+<p class="p1"><i><span class="Apple-converted-space">    </span>});</i></p>
+<p class="p2"><br></p>
+<p class="p3"><span class="s2"><i><span class="Apple-converted-space">    </span>// </i></span>마커에<span class="s2"><i> </i></span>이벤트를<span class="s2"><i> </i></span>등록하는<span class="s2"><i> </i></span>함수<span class="s2"><i> </i></span>만들고<span class="s2"><i> </i></span>즉시<span class="s2"><i> </i></span>호출하여<span class="s2"><i> </i></span>클로저를<span class="s2"><i> </i></span>만듭니다</p>
+<p class="p3"><span class="s2"><i><span class="Apple-converted-space">    </span>// </i></span>클로저를<span class="s2"><i> </i></span>만들어<span class="s2"><i> </i></span>주지<span class="s2"><i> </i></span>않으면<span class="s2"><i> </i></span>마지막<span class="s2"><i> </i></span>마커에만<span class="s2"><i> </i></span>이벤트가<span class="s2"><i> </i></span>등록됩니다</p>
+<p class="p1"><i><span class="Apple-converted-space">    </span>(function(marker, infowindow) {</i></p>
+<p class="p1"><i><span class="Apple-converted-space">        </span>// </i><span class="s1">마커에</span><i> mouseover </i><span class="s1">이벤트를</span><i> </i><span class="s1">등록하고</span><i> </i><span class="s1">마우스</span><i> </i><span class="s1">오버</span><i> </i><span class="s1">시</span><i> </i><span class="s1">인포윈도우를</span><i> </i><span class="s1">표시합니다</span><i><span class="Apple-converted-space"> </span></i></p>
+<p class="p1"><i><span class="Apple-converted-space">        </span>kakao.maps.event.addListener(marker, 'mouseover', function() {</i></p>
+<p class="p1"><i><span class="Apple-converted-space">            </span>infowindow.open(map, marker);</i></p>
+<p class="p1"><i><span class="Apple-converted-space">        </span>});</i></p>
+<p class="p2"><br></p>
+<p class="p1"><i><span class="Apple-converted-space">        </span>// </i><span class="s1">마커에</span><i> mouseout </i><span class="s1">이벤트를</span><i> </i><span class="s1">등록하고</span><i> </i><span class="s1">마우스</span><i> </i><span class="s1">아웃</span><i> </i><span class="s1">시</span><i> </i><span class="s1">인포윈도우를</span><i> </i><span class="s1">닫습니다</span></p>
+<p class="p1"><i><span class="Apple-converted-space">        </span>kakao.maps.event.addListener(marker, 'mouseout', function() {</i></p>
+<p class="p1"><i><span class="Apple-converted-space">            </span>infowindow.close();</i></p>
+<p class="p1"><i><span class="Apple-converted-space">        </span>});</i></p>
+<p class="p1"><i><span class="Apple-converted-space">    </span>})(marker, infowindow);</i></p>
+<p class="p1"><i>}</i></p>
+<p class="p1"><i>*/</i></p>
+<p class="p1">&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
